@@ -1,0 +1,71 @@
+body {
+    background-image: url('../img/inicio.jpg');
+    background-position: left top; /* Posición de la imagen a la izquierda arriba */
+    background-size: cover; /* Escala la imagen para cubrir toda la área */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    padding-top: 100px; /* Espaciado superior para centrar verticalmente el contenido */
+    padding-left: 20%; /* Espaciado izquierdo para la imagen */
+}
+
+.contenedor{width: 260px; height:190px; border:1px solid;
+    padding-left:3px; padding-top:5px;}
+
+    #form1{font-family:Arial, sans-serif; font-size:13px; color: white;}
+
+    #inp1, #inp3{
+        background-repeat:no-repeat;
+        border: 10;
+        width: 203px;
+        height: 26px;
+        padding-left: 1px;
+        padding-top: 6px;
+    }
+    #inp10{background-color: white;}
+    #inp1{background-image:url(icon/in1.gif)}
+    #inp2{background-image:url(icon/in4.gif)}
+    #inp3{background-image:url(icon/input7.gif)}
+    #inp4{background-image:url(icon/input6.gif)}
+    #inp5{background-image:url(icon/in2.gif)}
+    #inp8{background-image:url(icon/btninput.gif); cursor:hand;}
+
+.sesion{
+    text-align: center;
+    color: antiquewhite;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
+/*
+.container3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.imagen-izquierda {
+    max-width: 80%; /* La imagen ocupa la mitad del ancho del contenedor */
+ /*   align-self: center; /* La imagen se centra verticalmente */
+/*}
+
+.contenido-derecha {
+    max-width: 50%; /* El contenido ocupa la otra mitad del ancho del contenedor */
+   /* align-self: center; /* El contenido se centra verticalmente */
+/*}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column-reverse; /* Cambia la dirección de los elementos en pantallas pequeñas */
+ /*   }
+
+    .imagen-izquierda,
+    .contenido-derecha {
+        max-width: 100%; /* Ambos elementos ocupan el 100% del ancho en pantallas pequeñas */
+/*    }
+}
+
+
+
+
+
+
+
