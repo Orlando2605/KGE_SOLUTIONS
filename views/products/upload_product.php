@@ -15,7 +15,7 @@ if (isset($_FILES['factura'])) {
     $notas = $_POST['notas'];
     $grupo = $_POST['grupo'];
     $imagen = $_POST['imagen'];
-    $nuevo_grupo = $_POST['nuevo_grupo'];
+    //$nuevo_grupo = $_POST['nuevo_grupo'];
 
     // Definir la carpeta de destino
     $carpeta_destino = "../../includes/files/";
@@ -36,7 +36,7 @@ if (isset($_FILES['factura'])) {
                     // Insertar la información del archivo en la base de datos
                     include "../../includes/conexion/db.php";
                     $sqlnuevo = "INSERT INTO products (clave, marca, modelo, unidad, num_parte, descripcion, presentacion, grupo, tipo, precio, imagen, notas, factura) 
-                    VALUES ( '$clave', '$marca', '$modelo', '$unidad', '$num_parte', '$descripcion', '$presentacion', '$nuevo_grupo','$tipo', '$precio', '$imagen', '$notas')";
+                    VALUES ( '$clave', '$marca', '$modelo', '$unidad', '$num_parte', '$descripcion', '$presentacion', '$nuevo_grupo','$tipo', '$precio', '$imagen', '$notas', '$nombre_archivo')";
                     $resultado = mysqli_query($conexion, $sqlnuevo);
                     if ($resultado) {
                         echo "<script language='JavaScript'>
@@ -72,7 +72,7 @@ if (isset($_FILES['factura'])) {
                     // Insertar la información del archivo en la base de datos
                     include "../../includes/conexion/db.php";
                     $sql = "INSERT INTO products (clave, marca, modelo, unidad, num_parte, descripcion, presentacion, grupo, tipo, precio, imagen, notas, factura) 
-                    VALUES ( '$clave', '$marca', '$modelo', '$unidad', '$num_parte', '$descripcion', '$presentacion', '$grupo','$tipo', '$precio', '$imagen', '$notas', '$factura')";
+                    VALUES ( '$clave', '$marca', '$modelo', '$unidad', '$num_parte', '$descripcion', '$presentacion', '$grupo','$tipo', '$precio', '$imagen', '$notas', '$nombre_archivo')";
                     $resultado = mysqli_query($conexion, $sql);
                     if ($resultado) {
                         echo "<script language='JavaScript'>

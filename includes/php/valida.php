@@ -25,7 +25,7 @@ $uid = "";
 
 if($fila = mysqli_fetch_array($result))
 {
-    $uid = $fila['id_usuario'];
+    $uid = $fila['id'];
     $datousuario = $fila['tx_username'];
     $catusr =  $fila['id_tipousuario'];
     $datopass = $fila['tx_password'];
@@ -33,7 +33,7 @@ if($fila = mysqli_fetch_array($result))
 
     $_SESSION['existe'] = 'SI';
 
-    $_SESSION['id_usuario'] = $uid;
+    $_SESSION['id'] = $uid;
     $_SESSION['tx_username'] = $datousuario;
     $_SESSION['tx_password'] = $datopass;
     $_SESSION['id_TipoUsuario'] = $catusr;
@@ -45,7 +45,7 @@ if($fila = mysqli_fetch_array($result))
         echo("<script>alert('Bienvenido a tu sesion: ". $usuario .
         "". $tipousuario .", has clic en aceptar para continuar');");
 
-        $_SESSION['id_usuario'] = $uid;
+        $_SESSION['id'] = $uid;
         $_SESSION['tx_username'] = $datousuario;
         $_SESSION['tx_password'] = $datopass;
         $_SESSION['id_TipoUsuario'] = $catusr;
@@ -60,7 +60,7 @@ if($fila = mysqli_fetch_array($result))
         "". $tipousuario .", has clic en aceptar para continuar');");
 
             
-        $_SESSION['id_usuario'] = $uid;
+        $_SESSION['id'] = $uid;
         $_SESSION['tx_username'] = $datousuario;
         $_SESSION['tx_password'] = $datopass;
         $_SESSION['id_TipoUsuario'] = $catusr;

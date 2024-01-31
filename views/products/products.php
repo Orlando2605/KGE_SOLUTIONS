@@ -122,7 +122,6 @@
                             }
 
                             echo "</div>";
-                            echo "</div>";
                         }
                     } else {
                         echo "No hay categorías disponibles.";
