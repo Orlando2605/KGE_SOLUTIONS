@@ -55,17 +55,118 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
         crossorigin="anonymous">
+        <link rel="stylesheet" href="../../includes/css/styles.css">
 
     <script src="../../js/jquery.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
 </head>
 
-<body>
-    <br>
+<body id="fondo">
+        <!-----MENU----->
+        <div class="menu">
+            <ion-icon name="menu-outline"></ion-icon>
+            <ion-icon name="close-outline"></ion-icon>
+        </div>
+
+        <div class="barra-lateral">
+            <div>
+                <div class="nombre-pagina">
+                    <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+                    <span>KGE</span>
+                </div>
+                <button class="boton" data-toggle="modal" data-target="#agregar">
+                    <ion-icon name="add-outline"></ion-icon>
+                    <span>Nuevo activo</span>
+                </button>
+            </div>
+
+            <nav class="navegacion">
+                <ul>
+                    <li>
+                        <a id="inbox" href="#">
+                            <ion-icon name="mail-unread-outline"></ion-icon>
+                            <span>Usuarios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <ion-icon name="star-outline"></ion-icon>
+                            <span>A-Usuarios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <ion-icon name="paper-plane-outline"></ion-icon>
+                            <span>Productos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <ion-icon name="document-text-outline"></ion-icon>
+                            <span>Drafts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <ion-icon name="bookmark-outline"></ion-icon>
+                            <span>Important</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <ion-icon name="alert-circle-outline"></ion-icon>
+                            <span>Spam</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <ion-icon name="trash-outline"></ion-icon>
+                            <span>Trash</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div>
+                <div class="linea"></div>
+
+                <div class="modo-oscuro">
+                    <div class="info">
+                        <ion-icon name="moon-outline"></ion-icon>
+                        <span>Drak Mode</span>
+                    </div>
+                    <div class="switch">
+                        <div class="base">
+                            <div class="circulo">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="usuario">
+                    <img src="/Jhampier.jpg" alt="">
+                    <div class="info-usuario">
+                        <div class="nombre-email">
+                            <span class="nombre">Jhampier</span>
+                            <span class="email">jhampier@gmail.com</span>
+                        </div>
+                        <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <main>
+            
+        </main>
+    <!-----MENU----->
 
     <div class="container">
         <div class="col-sm-12">
-            <h2 style="text-align: center;">PRODUCTOS DE ACTIVOS FIJOS ADMINISTRADOR</h2>
+            <h2 style="text-align: center;" id="titulo">PRODUCTOS DE ACTIVOS FIJOS ADMINISTRADOR</h2>
             <br>
             <div>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar"> Agregar
@@ -83,8 +184,8 @@
                              <!------->
             <br>
 
-            <div class="row">
-                <div class="col-md-8">
+            <div class="row" id="tabla">
+                <div class="col-md-8" id="tabla1">
                     <?php
                     // Conexión a la base de datos (reemplaza con tus propias credenciales)
                     $conexion = new mysqli("localhost", "root", "", "kge");
@@ -102,9 +203,9 @@
                         while ($row_categoria = $result_categorias->fetch_assoc()) {
                             $categoria_actual = $row_categoria['categoria'];
 
-                            echo "<div class='card'>";
+                            echo "<div class=''>";
                             echo "<div class='card-body'>";
-                            echo "<h4>$categoria_actual</h4>";
+                            echo "<h5>$categoria_actual</h5>";
 
                             // Consultar elementos de la categoría actual
                             $query = "SELECT id, codigo, marca, clave, serie, existencia, usuarios, costo, factura, descripcion FROM act_fijos WHERE categoria = '$categoria_actual'";
@@ -112,7 +213,7 @@
 
                             // Verificar si hay resultados
                             if ($result_categoria->num_rows > 0) {
-                                echo "<table class='table table-hover'>";
+                                echo "<table class='table table-hover' id='tabla1'>";
                                 echo "<thead><tr>
                                             <th>ID</th>
                                             <th>Codigo</th>
@@ -216,8 +317,12 @@
             });
         });
     </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../../js/script.js"></script>
 
 </body>
 <?php include "agregar.php"; ?>
+
 
 </html>

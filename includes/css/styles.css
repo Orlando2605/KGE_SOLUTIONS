@@ -1,0 +1,458 @@
+b {
+    background-image: url('../img/inicio.jpg');
+    background-position: left top; /* Posición de la imagen a la izquierda arriba */
+    background-size: cover; /* Escala la imagen para cubrir toda la área */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    padding-top: 100px; /* Espaciado superior para centrar verticalmente el contenido */
+    padding-left: 20%; /* Espaciado izquierdo para la imagen */
+}
+
+/* .contenedor{width: 260px; height:190px; border:1px solid;
+    padding-left:3px; padding-top:5px;}
+
+    #form1{font-family:Arial, sans-serif; font-size:13px; color: white;}
+
+    #inp1, #inp3{
+        background-repeat:no-repeat;
+        border: 10;
+        width: 203px;
+        height: 26px;
+        padding-left: 1px;
+        padding-top: 6px;
+    }
+    #inp10{background-color: white;}
+    #inp1{background-image:url(icon/in1.gif)}
+    #inp2{background-image:url(icon/in4.gif)}
+    #inp3{background-image:url(icon/input7.gif)}
+    #inp4{background-image:url(icon/input6.gif)}
+    #inp5{background-image:url(icon/in2.gif)}
+    #inp8{background-image:url(icon/btninput.gif); cursor:hand;}
+
+.sesion{
+    text-align: center;
+    color: antiquewhite;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+} */
+
+
+
+/*
+.container3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.imagen-izquierda {
+    max-width: 80%; /* La imagen ocupa la mitad del ancho del contenedor */
+ /*   align-self: center; /* La imagen se centra verticalmente */
+/*}
+
+.contenido-derecha {
+    max-width: 50%; /* El contenido ocupa la otra mitad del ancho del contenedor */
+   /* align-self: center; /* El contenido se centra verticalmente */
+/*}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column-reverse; /* Cambia la dirección de los elementos en pantallas pequeñas */
+ /*   }
+
+    .imagen-izquierda,
+    .contenido-derecha {
+        max-width: 100%; /* Ambos elementos ocupan el 100% del ancho en pantallas pequeñas */
+/*    }
+}
+
+/* ADD CSS NEW */ 
+/*....CSS VENTANA MENU NAV.....*/
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+:root{
+    --color-barra-lateral:rgb(255,255,255);
+
+    --color-texto:rgb(0,0,0);
+    --color-texto-menu:rgb(134,136,144);
+
+    --color-menu-hover:rgb(238,238,238);
+    --color-menu-hover-texto:rgb(0,0,0);
+
+    --color-boton:rgb(0,0,0);
+    --color-boton-texto:rgb(255,255,255);
+
+    --color-linea:rgb(180,180,180);
+
+    --color-switch-base :rgb(201,202,206);
+    --color-switch-circulo:rgb(241,241,241);
+
+    --color-scroll:rgb(192,192,192);
+    --color-scroll-hover:rgb(134,134,134);
+}
+
+.dark-mode{
+    --color-barra-lateral:rgb(44,45,49);
+
+    --color-texto:rgb(255,255,255);
+    --color-texto-menu:rgb(110,110,117);
+
+    --color-menu-hover:rgb(0,0,0);
+    --color-menu-hover-texto:rgb(238,238,238);
+
+    --color-boton:rgb(255,255,255);
+    --color-boton-texto:rgb(0,0,0);
+
+    --color-linea:rgb(90,90,90);
+
+    --color-switch-base :rgb(39,205,64);
+    --color-switch-circulo:rgb(255,255,255);
+
+    --color-scroll:rgb(68,69,74);
+    --color-scroll-hover:rgb(85,85,85);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+body{
+    height: 100vh;
+    width: 100%;
+    background-color: darkcyan;
+}
+
+/*-----------------Menu*/
+.menu{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--color-boton);
+    color: var(--color-boton-texto);
+    right: 15px;
+    top: 15px;
+    z-index: 100;
+}
+
+
+/*----------------Barra Lateral*/
+.barra-lateral{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+    height: 100%;
+    overflow: hidden;
+    padding: 20px 15px;
+    background-color: var(--color-barra-lateral);
+    transition: width 0.5s ease,background-color 0.3s ease,left 0.5s ease;
+    z-index: 50;
+}
+
+.mini-barra-lateral{
+    width: 80px;
+}
+.barra-lateral span{
+    width: 100px;
+    white-space: nowrap;
+    font-size: 18px;
+    text-align: left;
+    opacity: 1;
+    transition: opacity 0.5s ease,width 0.5s ease;
+}
+.barra-lateral span.oculto{
+    opacity: 0;
+    width: 0;
+}
+
+/*------------> Nombre de la página */
+.barra-lateral .nombre-pagina{
+    width: 100%;
+    height: 45px;
+    color: var(--color-texto);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+.barra-lateral .nombre-pagina ion-icon{
+    min-width: 50px;
+    font-size: 40px;
+    cursor: pointer;
+}
+.barra-lateral .nombre-pagina span{
+    margin-left: 5px;
+    font-size: 25px;
+}
+
+
+/*------------> Botón*/
+.barra-lateral .boton{
+    width: 100%;
+    height: 45px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-boton);
+    color: var(--color-boton-texto);
+}
+.barra-lateral .boton ion-icon{
+    min-width: 50px;
+    font-size: 25px;
+}
+
+
+/*--------------> Menu Navegación*/
+.barra-lateral .navegacion{
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.barra-lateral .navegacion::-webkit-scrollbar{
+    width: 5px;
+}
+.barra-lateral .navegacion::-webkit-scrollbar-thumb{
+    background-color: var(--color-scroll);
+    border-radius: 5px;
+}
+.barra-lateral .navegacion::-webkit-scrollbar-thumb:hover{
+    background-color: var(--color-scroll-hover);
+}
+.barra-lateral .navegacion li{  
+    list-style: none;
+    display: flex;
+    margin-bottom: 5px;
+}
+.barra-lateral .navegacion a{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    color: var(--color-texto-menu);
+}
+.barra-lateral .navegacion a:hover{
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+.barra-lateral .navegacion ion-icon{
+    min-width: 50px;
+    font-size: 20px;
+}
+
+/*-----------------> Linea*/
+.barra-lateral .linea{
+    width: 100%;
+    height: 1px;
+    margin-top: 15px;
+    background-color: var(--color-linea);
+}
+
+/*----------------> Modo Oscuro*/
+.barra-lateral .modo-oscuro{
+    width: 100%;
+    margin-bottom: 80px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.barra-lateral .modo-oscuro .info{
+    width: 150px;
+    height: 50px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: var(--color-texto-menu);
+}
+.barra-lateral .modo-oscuro ion-icon{
+
+    width: 50px;
+    font-size: 20px;
+}
+
+/*--->switch*/
+.barra-lateral .modo-oscuro .switch{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    height: 45px;
+    cursor: pointer;
+}
+.barra-lateral .modo-oscuro .base{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 35px;
+    height: 20px;
+    background-color: var(--color-switch-base);
+    border-radius: 50px;
+}
+.barra-lateral .modo-oscuro .circulo{
+    position: absolute;
+    width: 18px;
+    height: 90%;
+    background-color: var(--color-switch-circulo);
+    border-radius: 50%;
+    left: 2px;
+    transition: left 0.5s ease;
+}
+.barra-lateral .modo-oscuro .circulo.prendido{
+    left: 15px;
+}
+
+/*---------------> Usuario*/
+.barra-lateral .usuario{
+    width: 100%;
+    display: flex;
+}
+.barra-lateral .usuario img{
+    width: 50px;
+    min-width: 50px;
+    border-radius: 10px;
+}
+.barra-lateral .usuario .info-usuario{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-texto);
+    overflow: hidden;
+}
+.barra-lateral .usuario .nombre-email{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+.barra-lateral .usuario .nombre{
+    font-size: 15px;
+    font-weight: 600;
+}
+.barra-lateral .usuario .email{
+    font-size: 13px;
+}
+.barra-lateral .usuario ion-icon{
+    font-size: 20px;
+}
+
+
+/*-------------main*/
+
+#inbox{
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+
+main{
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.5s ease;
+}
+main.min-main{
+    margin-left: 80px;
+}
+
+
+
+/*------------------> Responsive*/
+@media (max-height: 660px){
+    .barra-lateral .nombre-pagina{
+        margin-bottom: 5px;
+    }
+    .barra-lateral .modo-oscuro{
+        margin-bottom: 3px;
+    }
+}
+@media (max-width: 600px){
+    .barra-lateral{
+        position: fixed;
+        left: -250px;
+    }
+    .max-barra-lateral{
+        left: 0;
+    }
+    .menu{
+        display: flex;
+    }
+    .menu ion-icon:nth-child(2){
+        display: none;
+    }
+    main{
+        margin-left: 0;
+    }
+    main.min-main{
+        margin-left: 0;
+    }
+    
+}
+
+
+
+
+/*....CSS VENTANA INDEX.....*/
+#tabla1{
+    font-size: 10pt;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+}
+
+#titulo{
+    font-family: Pacifico;
+    font-size: 2em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    background-color: transparent;
+    padding: 5px;
+    border: 1px solid #ffffff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+  }
+
+#fondo{
+    background-color: #131523;
+}
+
+#detalle-producto{
+    color: rgb(255, 255, 255);
+    background-color: #271c1c;
+    text-decoration: dashed;
+}
+#descripcion-producto{
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    border:1px #221f1f;
+    border-style: solid;
+    background-color: rgb(20, 20, 15);
+    border-width: 3px;
+}
+#factura-producto{
+    color: rgb(30, 90, 218);
+}
+#boton {
+    position: absolute;
+    top: 100%;
+    left: 73%;
+    transform: translate(80%, -680%);
+    color: #360068;
+    background-color: #ffffff;
+    font-weight: bold;
+  }
+
+
+
+
+
+
+
+
