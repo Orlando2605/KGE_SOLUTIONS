@@ -80,7 +80,7 @@ if(isset($_GET['enviar'])){
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 p-2">
-                    <table class="table">
+                    <table class="table table-success table-striped">
                         <!---class="table table-striped  table-dark"-->
                         <thead class="bg-warning">
                             <tr>

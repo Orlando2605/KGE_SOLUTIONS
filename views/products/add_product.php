@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h3 class="modal-title" id="exampleModalLabel">AGREGAR PRODUCTO FIJO</h3>
+                <h3 class="modal-title" id="exampleModalLabel">AGREGAR PRODUCTO GENERAL</h3>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">
                     <i class="fa fa-times" aria-hidden="true"></i></button>
             </div>

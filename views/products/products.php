@@ -1,3 +1,15 @@
+<?php
+// Evitar cacheo de página
+#header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+#header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Fecha en el pasado
+
+// Si no hay una sesión iniciada, redireccionar al inicio o a donde desees
+#if (!isset($_SESSION['usuario'])) {
+#    header("Location: ../../index.php");
+#    exit;
+#}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -42,10 +54,9 @@
             <h2 style="text-align: center;">PRODUCTOS GENERALES</h2>
             <br>
             <div>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar"> Agregar
-                </button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#agregar">Agregar</button>
 
-                <a href="../users/user.php" class="btn btn-primary">Ir a usuarios</a>
+                <a href="../users/user.php" class="btn btn-success">Ir a usuarios</a>
                 
                 <a href="../views_admin/index.php" class="btn btn-primary">Activos fijos</a>
             </div>
@@ -97,6 +108,7 @@
                                             <th>Grupo</th>
                                             <th>Tipo</th>
                                             <th>Precio</th>
+                            
                                         </tr></thead>";
                                 echo "<tbody>";
 

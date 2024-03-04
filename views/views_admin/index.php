@@ -24,6 +24,8 @@
  
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -162,7 +164,7 @@
                             <p id="descripcion-producto"></p>
                             <p id="factura-producto"></p>
                             <br>
-                            <a class="btn btn-primary" id="btn-descargar" href="#">Descargar</a>
+                            <a class="btn btn-primary" id="btn-descargar" href="#">Descargar Factura</a>
                             <a class="btn btn-warning" id="btn-editar" href="#">Editar</a>
                             <a class="btn btn-danger" id="btn-eliminar" href="#">Eliminar</a>
                             

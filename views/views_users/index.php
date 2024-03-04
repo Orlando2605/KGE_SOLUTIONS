@@ -80,7 +80,7 @@
 include("../../includes/conexion/db.php");
 
 // Obtener categorías únicas de la base de datos
-$result = $conexion->query("SELECT DISTINCT categoria FROM documento");
+$result = $conexion->query("SELECT DISTINCT categoria FROM act_fijos");
 $categorias = [];
 
 while ($row = $result->fetch_assoc()) {
