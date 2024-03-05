@@ -125,6 +125,10 @@
                     </div>
 
 
+                    <div class="mb-3">
+                        <label for="imagen" class="form-label">Imagen</label>
+                        <input type="file" name="imagen" id="imagen" class="form-control" required>
+                    </div>
 
 
                     <div class="col-12">
