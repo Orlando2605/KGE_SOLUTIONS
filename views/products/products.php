@@ -1,3 +1,4 @@
+<?php include "../../includes/php/header.php"; ?>
 <?php
 // Evitar cacheo de página
 #header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
@@ -33,14 +34,14 @@
     }
   </style>
     <title>ARCHIVOS FIJOS ADMINISTRADOR</title>
-
+<!-- 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
         crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
-        crossorigin="anonymous">
+        crossorigin="anonymous"> -->
 
     <script src="../../js/jquery.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
@@ -67,7 +68,10 @@
                 </form>
                              <!------->
             <br>
+            
 
+            
+            </div>
             <div class="row">
                 <div class="col-md-8">
                     <?php
@@ -97,7 +101,7 @@
 
                             // Verificar si hay resultados
                             if ($result_categoria->num_rows > 0) {
-                                echo "<table class='table table-striped table-dark table_id' padding='10px'>";
+                                echo "<table class='table table-striped table_id' padding='10px bg-dark'>";
                                 echo "<thead><tr>
                                             <th>Clave</th>
                                             <th>Marca</th>
@@ -164,5 +168,6 @@
 </body>
 
 <?php include "add_product.php"; ?>
+<?php include "../../includes/php/footer.php"; ?>
 
 </html>
