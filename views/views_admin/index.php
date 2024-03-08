@@ -108,7 +108,7 @@
                             echo "<h5>$categoria_actual</h5>";
 
                             // Consultar elementos de la categoría actual
-                            $query = "SELECT id, codigo, marca, clave, serie, existencia, usuarios, costo, factura, descripcion FROM act_fijos WHERE categoria = '$categoria_actual'";
+                            $query = "SELECT id, codigo, marca, clave, serie, existencia, usuarios, costo, factura, descripcion, imagen FROM act_fijos WHERE categoria = '$categoria_actual'";
                             $result_categoria = $conexion->query($query);
 
                             // Verificar si hay resultados
@@ -127,12 +127,12 @@
                                 echo "<tbody>";
 
                                 while ($fila = $result_categoria->fetch_assoc()) {
-                                    echo "<tr class='fila-seleccionable' data-id='" . $fila['id'] . "' data-descripcion='" . $fila['descripcion'] . "' data-factura='" . $fila['factura'] . "'>";
+                                    echo "<tr class='fila-seleccionable' data-id='" . $fila['id'] . "' data-descripcion='" . $fila['descripcion'] . "' data-factura='" . $fila['factura']  . "' data-imagen='" . $fila['imagen'] ."'>";
                                     echo "<td>" . $fila['id'] . "</td>";
                                     echo "<td>" . $fila['codigo'] . "</td>";
                                     echo "<td>" . $fila['marca'] . "</td>";
                                     echo "<td>" . $fila['clave'] . "</td>";
-                                    
+                         
                                     echo "<td>" . $fila['serie'] . "</td>";
                                     echo "<td>" . $fila['existencia'] . "</td>";
                                     echo "<td>" . $fila['usuarios'] . "</td>";
@@ -160,6 +160,8 @@
                     <div class="card">
                         <div class="card-body" id="detalle-producto">
                             <h4 class="text-center">Descripcion del producto</h4>
+                            <div id="imagen" align="center"></div><br>
+
                             <p id="descripcion-producto"></p>
                             <p id="factura-producto"></p>
                             <br>
@@ -180,10 +182,14 @@
             $(".fila-seleccionable").click(function () {
                 // Obtener datos de la fila seleccionada
                 var id = $(this).data("id");
+                var imagen = $(this).data("imagen")
                 var descripcion = $(this).data("descripcion");
                 var factura = $(this).data("factura");
 
                 // Mostrar datos en el contenedor 2
+                
+                $("#imagen").html("<img src='../../includes/img/" + imagen + "' alt='imagen' width='300px'>");
+        
                 $("#descripcion-producto").text("Descripción: " + descripcion);
                 $("#factura-producto").text("Factura: " + factura);
 
