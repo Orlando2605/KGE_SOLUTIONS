@@ -1,3 +1,4 @@
+<?php include "../../includes/php/header.php"; ?>
 <?php
   $mysql=new mysqli('localhost','root','','kge');
 
@@ -24,8 +25,6 @@
  
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -33,48 +32,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-    body {
-      height: 150vh; /* Esto es solo para crear suficiente contenido y permitir desplazamiento */
-      margin: 0;
-      padding: 0;
-    }
-
-    .contenedor-fijo {
-      position: fixed;
-      top:30%; /* Ajusta la posición superior según tus necesidades */
-      left: 65%; /* Ajusta la posición izquierda según tus necesidades */
-      background-color: #f0f0f0;
-      padding: 10px;
-      border: 1px solid #ccc;
-    }
+        
+    
+   
   </style>
     <title>ARCHIVOS FIJOS ADMINISTRADOR</title>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-        crossorigin="anonymous">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
-        crossorigin="anonymous">
-        <link rel="stylesheet" href="../../includes/css/styles.css">
+   
 
-    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery.min.js"></script> <!-- ayuda a mostrar los datos del contenedor 2 -->
     <script src="../../js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" href="../../includes/css/style.css"> -->
 </head>
 
-<body id="fondo">
-    <div class="container"><br><br>
+<body>
+    <br>
+    <!-- Empieza el menu -->
+
+    <!-- Termina el menu -->
+
+    <div class="container-fluid position-relative d-flex p-4">
         <div class="col-sm-12">
-            <h2 style="text-align: center;" id="titulo">PRODUCTOS DE ACTIVOS FIJOS ADMINISTRADOR</h2>
+            <h2 style="text-align: center;" id="titulo">PRODUCTOS DE ARCHIVOS FIJOS ADMINISTRADOR</h2>
             <br>
             <div>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar"> Agregar
                 </button>
 
                 <a href="../users/user.php" class="btn btn-primary">Ir a usuarios</a>
-                
-                <a href="../products/products.php" class="btn btn-primary">Productos</a>
             </div>
             <br>
                <!---Terminar sesion--->
@@ -84,7 +69,7 @@
                              <!------->
             <br>
 
-            <div class="row" id="tabla">
+            <div class="row" class="tabla">
                 <div class="col-md-8" id="tabla1">
                     <?php
                     // Conexión a la base de datos (reemplaza con tus propias credenciales)
@@ -105,7 +90,7 @@
 
                             echo "<div class=''>";
                             echo "<div class='card-body'>";
-                            echo "<h5>$categoria_actual</h5>";
+                            echo "<h6 class='color-categoria'>$categoria_actual</h6>"; //titulo de tabla
 
                             // Consultar elementos de la categoría actual
                             $query = "SELECT id, codigo, marca, clave, serie, existencia, usuarios, costo, factura, descripcion, imagen FROM act_fijos WHERE categoria = '$categoria_actual'";
@@ -113,8 +98,9 @@
 
                             // Verificar si hay resultados
                             if ($result_categoria->num_rows > 0) {
-                                echo "<table class='table table-hover' id='tabla1'>";
-                                echo "<thead><tr>
+                                echo "<div class='table-responsive'>";
+                                echo "<table class='table text-start align-middle table-bordered table-hover mb-1 bg-secondary'>"; /* color gris de la tabla por si se gusta cambiar */
+                                echo "<thead><tr class='text-white'>
                                             <th>ID</th>
                                             <th>Codigo</th>
                                             <th>Marca</th>
@@ -142,6 +128,7 @@
 
                                 echo "</tbody>";
                                 echo "</table>";
+                                echo "</div>";
                             } else {
                                 echo "No hay elementos en esta categoría.";
                             }
@@ -165,7 +152,7 @@
                             <p id="descripcion-producto"></p>
                             <p id="factura-producto"></p>
                             <br>
-                            <a class="btn btn-primary" id="btn-descargar" href="#">Descargar Factura</a>
+                            <a class="btn btn-primary" id="btn-descargar" href="#">Descargar</a>
                             <a class="btn btn-warning" id="btn-editar" href="#">Editar</a>
                             <a class="btn btn-danger" id="btn-eliminar" href="#">Eliminar</a>
                             
@@ -223,12 +210,9 @@
             });
         });
     </script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="../../js/script.js"></script>
 
 </body>
 <?php include "agregar.php"; ?>
-
+<?php include "../../includes/php/footer.php"; ?>
 
 </html>
