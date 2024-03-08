@@ -59,6 +59,7 @@ $query=mysqli_query($conexion,$sql);
     if (isset($_GET['enviar'])) {
         $search = $_GET['search'];
 
+<<<<<<< HEAD
         if (isset($_GET['search'])) {
             $where = "WHERE tbl_users.tx_nombre LIKE '%".$search."%' OR tx_apellidoPaterno LIKE '%".$search."%' OR tx_apellidoMaterno LIKE '%".$search."%' OR tx_correo LIKE '%".$search."%' OR tx_username LIKE '%".$search."%' OR id_tipousuario LIKE '%".$search."%'";
         }
@@ -93,6 +94,22 @@ $query=mysqli_query($conexion,$sql);
                         while ($row = mysqli_fetch_array($query)) {
                             $M = $row['id_tipousuario'];
                             ?>
+=======
+	if (isset($_GET['serch']))
+	{
+		$where="WHERE tbl_users.tx_nombre LIKE'%".$serch."%' OR tx_apellidoPaterno  LIKE'%".$serch."%' OR tx_apellidoMaterno  LIKE'%".$serch."%' OR tx_correo  LIKE'%".$serch."%' OR tx_username  LIKE'%".$serch."%'
+    OR id_tipousuario  LIKE'%".$serch."%'" ;
+	}
+   
+}
+?>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-success table-striped">
+                        <!---class="table table-striped  table-dark"-->
+                        <thead class="bg-warning">
+>>>>>>> eb51592953ccde8d86ef06a3fb35235d43a2cde5
                             <tr>
                                 <th><?php echo $row['id']?></th>
                                 <th><?php echo $row['tx_nombre']?></th>

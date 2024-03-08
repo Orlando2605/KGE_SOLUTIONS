@@ -25,7 +25,23 @@ if (isset($_FILES['factura'])) {
     $nombre_archivo = basename($_FILES["factura"]["name"]);
     $extension = strtolower(pathinfo($nombre_archivo, PATHINFO_EXTENSION));
 
+    // Obtener el nombre y la extensión de la imagen
+    $nombre_imagen = basename($_FILES["imagen"]["name"]);
+    $extension_imagen = strtolower(pathinfo($nombre_imagen, PATHINFO_EXTENSION));
 
+
+    // Definir la carpeta de destino para la imagen
+    $carpeta_imagen = "../../includes/img/";
+
+
+    if ($extension_imagen == "jpg" || $extension_imagen == "jpeg" || $extension_imagen == "png") {
+        // Mover la imagen a la carpeta de destino
+        if (move_uploaded_file($_FILES["imagen"]["tmp_name"], $carpeta_imagen . $nombre_imagen)) {
+            // Agregar el nombre de la imagen a la base de datos
+            include "../../includes/conexion/db.php";
+            // Aquí deberías adaptar tu código para insertar el nombre de la imagen en la base de datos junto con otros datos del formulario
+            // Ejemplo:
+            
     if (!empty($nuevo_grupo)) {
         // Validar la extensión del archivo
             if ($extension == "pdf" || $extension == "doc" || $extension == "docx") {
@@ -36,7 +52,7 @@ if (isset($_FILES['factura'])) {
                     // Insertar la información del archivo en la base de datos
                     include "../../includes/conexion/db.php";
                     $sqlnuevo = "INSERT INTO products (clave, marca, modelo, unidad, num_parte, descripcion, presentacion, grupo, tipo, precio, imagen, notas, factura) 
-                    VALUES ( '$clave', '$marca', '$modelo', '$unidad', '$num_parte', '$descripcion', '$presentacion', '$nuevo_grupo','$tipo', '$precio', '$imagen', '$notas', '$nombre_archivo')";
+                    VALUES ( '$clave', '$marca', '$modelo', '$unidad', '$num_parte', '$descripcion', '$presentacion', '$nuevo_grupo','$tipo', '$precio', '$nombre_imagen', '$notas', '$nombre_archivo')";
                     $resultado = mysqli_query($conexion, $sqlnuevo);
                     if ($resultado) {
                         echo "<script language='JavaScript'>
@@ -72,7 +88,7 @@ if (isset($_FILES['factura'])) {
                     // Insertar la información del archivo en la base de datos
                     include "../../includes/conexion/db.php";
                     $sql = "INSERT INTO products (clave, marca, modelo, unidad, num_parte, descripcion, presentacion, grupo, tipo, precio, imagen, notas, factura) 
-                    VALUES ( '$clave', '$marca', '$modelo', '$unidad', '$num_parte', '$descripcion', '$presentacion', '$grupo','$tipo', '$precio', '$imagen', '$notas', '$nombre_archivo')";
+                    VALUES ( '$clave', '$marca', '$modelo', '$unidad', '$num_parte', '$descripcion', '$presentacion', '$grupo','$tipo', '$precio', '$nombre_imagen', '$notas', '$nombre_archivo')";
                     $resultado = mysqli_query($conexion, $sql);
                     if ($resultado) {
                         echo "<script language='JavaScript'>
@@ -100,3 +116,25 @@ if (isset($_FILES['factura'])) {
             }
     }
 }
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+

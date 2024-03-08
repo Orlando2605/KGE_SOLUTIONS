@@ -73,7 +73,7 @@
             
             </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <?php
                     // Conexión a la base de datos (reemplaza con tus propias credenciales)
                     $conexion = new mysqli("localhost", "root", "", "kge");
