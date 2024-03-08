@@ -45,7 +45,6 @@
     <!-- <link rel="stylesheet" href="../../includes/css/style.css"> -->
 </head>
 
-<<<<<<< HEAD
 <body>
     <br>
     <!-- Empieza el menu -->
@@ -53,10 +52,6 @@
     <!-- Termina el menu -->
 
     <div class="container-fluid position-relative d-flex p-4">
-=======
-<body id="fondo">
-    <div class="container"><br><br>
->>>>>>> eb51592953ccde8d86ef06a3fb35235d43a2cde5
         <div class="col-sm-12">
             <h2 style="text-align: center;" id="titulo">PRODUCTOS DE ARCHIVOS FIJOS ADMINISTRADOR</h2>
             <br>

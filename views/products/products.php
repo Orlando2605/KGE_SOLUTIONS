@@ -10,7 +10,6 @@
 #    exit;
 #}
 ?>
-  c<!-- omentario1 -->
 
 <!DOCTYPE html>
 <html lang="es">
@@ -74,7 +73,7 @@
             
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <?php
                     // Conexión a la base de datos (reemplaza con tus propias credenciales)
                     $conexion = new mysqli("localhost", "root", "", "kge");
