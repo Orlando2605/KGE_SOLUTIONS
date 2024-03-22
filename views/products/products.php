@@ -57,20 +57,14 @@
             <div>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#agregar">Agregar</button>
 
-                <a href="../users/user.php" class="btn btn-success">Ir a usuarios</a>
+          <!--       <a href="../users/user.php" class="btn btn-success">Ir a usuarios</a> -->
                 
                 <a href="../views_admin/index.php" class="btn btn-primary">Activos fijos</a>
             </div>
-            <br>
-               <!---Terminar sesion--->
-                <form action="../../includes/php/exit.php" method="post">
-                    <input type="SUBMIT" value="Cerrar Sesi&oacute;n" />
-                </form>
-                             <!------->
-            <br>
+            
             
 
-            
+            <br>
             </div>
             <div class="row">
                 <div class="col-md-8">

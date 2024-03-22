@@ -4,12 +4,14 @@
 <head>
     <meta charset="utf-8">
     <title>KGE-SOLUTIONS</title>
+   <!--  <link rel="icon" href="../img/logo-kge.ico"> -->
+    <link rel="shortcut icon" type="x-icon" href="../img/logo.png">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <!-- <link href="img/favicon.ico" rel="icon"> -->
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +52,7 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="" alt="" style="width: 40px; height: 40px;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
@@ -75,6 +77,16 @@
                             <a href="blank.html" class="dropdown-item">Blank Page</a>
                         </div>
                     </div>
+                    <br> <br><br><br><br><br><br>
+                        <div>                           
+                            <form class="nav-item nav-link" action="../../includes/php/exit.php" method="post">
+                                <button type="submit" style="background: none; border: none; cursor: pointer; color: white; padding-top: 20px;">
+                                    <i class="fas fa-sign-out-alt fa-lg" style="color: white;"></i> Salir
+                                </button>
+                            </form>
+                        </div>
+                   
+                                <br>
                 </div>
             </nav>
         </div>

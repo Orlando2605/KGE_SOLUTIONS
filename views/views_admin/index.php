@@ -56,19 +56,20 @@
             <h2 style="text-align: center;" id="titulo">PRODUCTOS DE ARCHIVOS FIJOS ADMINISTRADOR</h2>
             <br>
             <div>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar"> Agregar
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar"> Agregar <!-- el boton esta de mas -->
                 </button>
 
-                <a href="../users/user.php" class="btn btn-primary">Ir a usuarios</a>
+             <!--    <a href="../users/user.php" class="btn btn-primary">Ir a usuarios</a>  -->
             </div>
-            <br>
-               <!---Terminar sesion--->
+            <!-- <br>
+               
                 <form action="../../includes/php/exit.php" method="post">
                     <input type="SUBMIT" value="Cerrar Sesi&oacute;n" />
                 </form>
-                             <!------->
+                           
             <br>
-
+ -->
+                <br>
             <div class="row" class="tabla">
                 <div class="col-md-8" id="tabla1">
                     <?php

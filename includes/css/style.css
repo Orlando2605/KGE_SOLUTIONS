@@ -1,6 +1,6 @@
 /********** Template CSS **********/
 :root {
-    --primary: #EB1616;
+    --primary: #913a3a;
     --secondary: #191C24;
     --light: #6C7293;
     --dark: #000000;
@@ -389,3 +389,12 @@
 
 
 /* FIN ACTIVOS */
+.buscador {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.btn-warning {
+    background-color: #794e0f;
+    border-color: #fffbfbf6;
+}
