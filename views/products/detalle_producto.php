@@ -6,15 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle del Producto</title>
 
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-        crossorigin="anonymous">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
-        crossorigin="anonymous">
-        <link rel="stylesheet" href="../../includes/css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../includes/css/styles.css">
 
     <script src="../../js/jquery.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
@@ -23,11 +18,17 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
+            background-color: #000;
+            color: #fff;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
 
         .producto-image {
@@ -36,8 +37,9 @@
         }
 
         .producto-image img {
-            max-width: 700PX;
-            height: 250PX;
+            max-width: 700px;
+            height: 250px;
+            border-radius: 5px;
         }
 
         .producto-detalles {
@@ -46,6 +48,10 @@
 
         .producto-detalles p {
             margin: 0 0 10px;
+        }
+
+        .btn {
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -116,10 +122,23 @@
                  echo "</div>";
                  echo "</div>";
  
-                 // fin de primera fila tres contenedores               
-                echo "<p><strong>Descripción:</strong> {$producto['descripcion']}</p>";
-                echo "<p><strong>Presentación:</strong> {$producto['presentacion']}</p>";
+                 // fin de primera fila tres contenedores
 
+                 //inicio de la descripción y presentación en cuadros
+                 echo "<div class='container'>";
+                 echo "<div class='row'>";
+
+                 echo "<div class='col-6 col-sm-6'>";
+                 echo "<p><strong>Descripción:</strong> {$producto['descripcion']}</p>";
+                 echo "</div>";
+                 echo "<div class='col-6 col-sm-6'>";
+                 echo "<p><strong>Presentación:</strong> {$producto['presentacion']}</p>";
+                 echo "</div>";
+
+                 echo "</div>";
+                 echo "</div>";
+
+                 // fin de la descripción y presentación en cuadros
 
                 //inicio de la primera fila 3 contenedores
                 echo "<div class='container'>";
@@ -158,12 +177,6 @@
         }
         ?>
     </div>
-
-    
-
-
-
-    
 
 </body>
 

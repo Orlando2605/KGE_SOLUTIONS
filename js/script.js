@@ -40,3 +40,37 @@ cloud.addEventListener("click",()=>{
         span.classList.toggle("oculto");
     });
 });
+
+
+/* login */
+const loginForm = document.getElementById('login-form');
+const usernameInput = loginForm.querySelector('input[name="username"]');
+const passwordInput = loginForm.querySelector('input[name="password"]');
+
+loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    // Implementar la lógica de validación de credenciales aquí
+    // Puedes utilizar AJAX o enviar los datos al servidor de forma segura
+
+    if (validarCredenciales(username, password)) {
+        // Credenciales válidas, redirigir al usuario a la página de inicio
+        window.location.href = '';
+    } else {
+        // Credenciales inválidas, mostrar un mensaje de error
+        alert('Nombre de usuario o contraseña incorrectos');
+    }
+});
+
+function validarCredenciales(username, password) {
+    // Implementar la lógica de validación de credenciales
+    // Aquí puedes realizar comprobaciones contra una base de datos o un servicio de autenticación
+
+    // Ejemplo básico: validar contra un usuario y contraseña hardcodeados
+    const usuarioValido = 'admin';
+    const passwordValida = 'password123';
+
+    return username === usuarioValido && password === passwordValida;
+}

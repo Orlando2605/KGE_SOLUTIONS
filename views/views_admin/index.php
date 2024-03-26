@@ -36,7 +36,7 @@
     
    
   </style>
-    <title>ARCHIVOS FIJOS ADMINISTRADOR</title>
+    <title>ACTIVOS FIJOS</title>
 
    
 
@@ -53,7 +53,7 @@
 
     <div class="container-fluid position-relative d-flex p-4">
         <div class="col-sm-12">
-            <h2 style="text-align: center;" id="titulo">PRODUCTOS DE ARCHIVOS FIJOS ADMINISTRADOR</h2>
+            <h2 style="text-align: center;" id="titulo">ACTIVOS FIJOS</h2>
             <br>
             <div>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar"> Agregar <!-- el boton esta de mas -->

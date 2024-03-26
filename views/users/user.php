@@ -1,29 +1,31 @@
-<?php include "../../includes/php/header.php"; ?>
-<?php include("../../includes/conexion/db.php"); ?>
+<?php 
+include "../../includes/php/header.php"; 
+include("../../includes/conexion/db.php");
 
-<?php
 $sql = "SELECT * FROM tbl_users";
 
 if (isset($_POST['buscar'])) {
-   $nombre = $_POST['nombre'];
-   $sql = "SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%' OR tx_apellidoPaterno LIKE '%$nombre%' OR tx_apellidoMaterno LIKE '%$nombre%' OR tx_correo LIKE '%$nombre%' OR tx_username LIKE '%$nombre%'";
+    $nombre = $_POST['nombre'];
+    $sql = "SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%' OR tx_apellidoPaterno LIKE '%$nombre%' OR tx_apellidoMaterno LIKE '%$nombre%' OR tx_correo LIKE '%$nombre%' OR tx_username LIKE '%$nombre%'";
 }
 
 if (isset($_POST['filtro'])) {
-   switch ($_POST['filtro']) {
-       case 'M_todos':
-           $sql = "SELECT * FROM tbl_users";
-           break;
-       case 'D_nombre':
-           $sql = "SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%'";
-           break;
-       case 'F_apellido':
-           $sql = "SELECT * FROM tbl_users WHERE tx_apellidoPaterno LIKE '%$nombre%'";
-           break;
-   }
+    $nombre = $_POST['nombre'];
+    switch ($_POST['filtro']) {
+        case 'M_todos':
+            $sql = "SELECT * FROM tbl_users";
+            break;
+        case 'D_nombre':
+            $sql = "SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%'";
+            break;
+        case 'F_apellido':
+            $sql = "SELECT * FROM tbl_users WHERE tx_apellidoPaterno LIKE '%$nombre%'";
+            break;
+    }
 }
 
 $query = mysqli_query($conexion, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -31,94 +33,71 @@ $query = mysqli_query($conexion, $sql);
 <head>
    <title>Administradores</title>
    <meta charset="UTF-8">
-   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
 </head>
-<body background="../Imagenes/gby.jpg" width="2500" weight="1000"><br>
+<!-- <body background="../Imagenes/gby.jpg" width="2500" weight="1000"><br>
     <style>
         .buscador {
             border-radius: 1px;
             padding: 10px;
         }
+        .btn-warning {
+            background-color: #794e0f;
+            border-color: #8b8b8a00;
+        }
+    </style> -->
 
-       
-            .btn-warning {
-                background-color: #794e0f;
-                border-color: #8b8b8a00;
-            }
-    </style>
-
-<!--Inicia contenedor busqueda -->
-
-<!-- fin busqueda -->
-
-<?php
-include("../../includes/conexion/db.php");
-$where = "";
-
-if (isset($_GET['enviar'])) {
-   $serch = $_GET['serch'];
-
-   if (isset($_GET['serch'])) {
-       $where = "WHERE tbl_users.tx_nombre LIKE '%$serch%' OR tx_apellidoPaterno LIKE '%$serch%' OR tx_apellidoMaterno LIKE '%$serch%' OR tx_correo LIKE '%$serch%' OR tx_username LIKE '%$serch%' OR id_tipousuario LIKE '%$serch%'";
-   }
-}
-?>
-
-<div class="container-fñuid p-5">
-        <div class="row align-items-center buscador">
-            <div class="container-row"></div>
-            <div class="col-5">
-                <form class="d-flex" method="GET">
-                    <input class="form-control me-2" type="search" placeholder="Datos a buscar" name="search" style="border: 1px solid #ccc; color: white;">
-                    <button class="btn btn-warning" type="submit" name="enviar"><b style="color: white;">Buscar</b></button>
-                </form>
-            </div>
-            <div class="col"></div>
+<div class="container-fluid p-5">
+    <div class="row align-items-center buscador">
+        <div class="container-row"></div>
+        <div class="col-5">
+            <form class="d-flex" method="POST">
+                <input class="form-control me-2" type="search" placeholder="Datos a buscar" name="nombre" style="border: 1px solid #ccc; color: white;">
+                <button class="btn btn-warning" type="submit" name="buscar"><b style="color: white;">Buscar</b></button>
+            </form>
         </div>
-   <div class="row">
-       <div class="col-12 p-2">
-           <table class="table text-start align-middle table-bordered table-hover mb-1 bg-secondary">
-               <thead class="text-white">
-                   <tr>
-                       <th>N</th>
-                       <th class="text-center">Nombre</th>
-                       <th class="text-center">Apellido Paterno</th>
-                       <th class="text-center">Apellido Materno</th>
-                       <th class="text-center">Correo</th>
-                       <th class="text-center">Usuario</th>
-                       <th class="text-center">Contraseña</th>
-                       <th class="text-center">Tipo de Usuario</th>
-                       <th class="text-center">Fecha</th>
-                       <th></th>
-                       <th></th>
-                   </tr>
-               </thead>
-               <tbody class="">
-                   <?php
-                   $con = mysqli_connect("localhost", "root", "", "kge");
-                   $sql = "SELECT * FROM tbl_users $where";
-                   $query = mysqli_query($con, $sql);
-                   while ($row = mysqli_fetch_array($query)) {
-                       $M = $row['id_tipousuario'];
-                       ?>
-                       <tr>
-                           <th><?php echo $row['id'] ?></th>
-                           <th><?php echo $row['tx_nombre'] ?></th>
-                           <th><?php echo $row['tx_apellidoPaterno'] ?></th>
-                           <th><?php echo $row['tx_apellidoMaterno'] ?></th>
-                           <th><?php echo $row['tx_correo'] ?></th>
-                           <th><?php echo $row['tx_username'] ?></th>
-                           <th><?php echo $row['tx_password'] ?></th>
-                           <th><?php echo ($M == 1) ? 'admin' : 'users'; ?></th>
-                           <th><?php echo $row['dt_registros'] ?></th>
-                           <th><a href="update.php?id=<?php echo $row['id'] ?>" class="btn btn-success">Editar</a></th>
-                           <th><a href="../../includes/php/delete_users.php?id=<?php echo $row['id'] ?>&tabla=tbl_users" class="btn btn-danger">Eliminar Usuarios</a></th>
-                       </tr>
-                   <?php } ?>
-               </tbody>
-           </table>
-       </div>
-   </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <div class="col-12 p-2">
+            <table class="table text-start align-middle table-bordered table-hover mb-1 bg-secondary">
+                <thead class="text-white">
+                    <tr>
+                        <th>N</th>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Apellido Paterno</th>
+                        <th class="text-center">Apellido Materno</th>
+                        <th class="text-center">Correo</th>
+                        <th class="text-center">Usuario</th>
+                        <th class="text-center">Contraseña</th>
+                        <th class="text-center">Tipo de Usuario</th>
+                        <th class="text-center">Fecha</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="">
+                    <?php
+                    while ($row = mysqli_fetch_array($query)) {
+                        $M = $row['id_tipousuario'];
+                        ?>
+                        <tr>
+                            <th><?php echo $row['id'] ?></th>
+                            <th><?php echo $row['tx_nombre'] ?></th>
+                            <th><?php echo $row['tx_apellidoPaterno'] ?></th>
+                            <th><?php echo $row['tx_apellidoMaterno'] ?></th>
+                            <th><?php echo $row['tx_correo'] ?></th>
+                            <th><?php echo $row['tx_username'] ?></th>
+                            <th><?php echo $row['tx_password'] ?></th>
+                            <th><?php echo ($M == 1) ? 'admin' : 'users'; ?></th>
+                            <th><?php echo $row['dt_registros'] ?></th>
+                            <th><a href="update.php?id=<?php echo $row['id'] ?>" class="btn btn-success">Editar</a></th>
+                            <th><a href="../../includes/php/delete_users.php?id=<?php echo $row['id'] ?>&tabla=tbl_users" class="btn btn-danger">Eliminar Usuarios</a></th>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <div>
@@ -131,12 +110,13 @@ if (isset($_GET['enviar'])) {
    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
        <div class="modal-dialog">
            <div class="modal-content">
-               <div class="modal-header bg-info">
+              
+           <div class="modal-header bg-info">
                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registros de Usuarios</h1>
                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
-               <div class="modal-body p-6 bg-success p-2 text-dark bg-opacity-10">
-                   <h3>Datos requeridos</h3>
+               <div class="modal-body p-6 p-2 text-dark ">
+                   <h3 class="text-dark">Datos requeridos</h3>
                    <form action="insert.php" method="POST">
                        <label for="..">Nombre:</label>
                        <input type="text" class="form-control mb-3" name="tx_nombre" placeholder="Nombre" required="True">
@@ -181,10 +161,8 @@ if (isset($_GET['enviar'])) {
 <br>
 <!-- FIN-PDF -->
 
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<!-- Resto del código HTML y JavaScript -->
 
 <?php include "../../includes/php/footer.php"; ?>
-
 </body>
 </html>
