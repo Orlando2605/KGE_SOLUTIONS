@@ -11,12 +11,15 @@ if (isset($_GET['id'])) {
     }
 
     // Consulta para eliminar el producto según el ID proporcionado
-    $sql = "DELETE FROM products WHERE id = $producto_id";
-    if ($conexion->query($sql) === TRUE) {
-        echo "Producto eliminado exitosamente.";
-    } else {
-        echo "Error al eliminar el producto: " . $conexion->error;
-    }
+        $sql = "DELETE FROM products WHERE id = $producto_id";
+        if ($conexion->query($sql) === TRUE) {
+            echo "Producto eliminado exitosamente.";
+            // Redirigir a la página deseada después de eliminar el producto
+            header("Location: products.php");
+            exit; // Asegura que el script se detenga después de la redirección
+        } else {
+            echo "Error al eliminar el producto: " . $conexion->error;
+        }
 
     // Cerrar conexión
     $conexion->close();
