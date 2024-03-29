@@ -91,7 +91,7 @@ $query = mysqli_query($conexion, $sql);
                             <th><?php echo ($M == 1) ? 'admin' : 'users'; ?></th>
                             <th><?php echo $row['dt_registros'] ?></th>
                             <th><a href="update.php?id=<?php echo $row['id'] ?>" class="btn btn-success">Editar</a></th>
-                            <th><a href="../../includes/php/delete_users.php?id=<?php echo $row['id'] ?>&tabla=tbl_users" class="btn btn-danger">Eliminar Usuarios</a></th>
+                            <th><a href="../../includes/php/delete_users.php?id=<?php echo $row['id'] ?>&tabla=tbl_users" class="btn btn-danger">Eliminar</a></th>
                         </tr>
                     <?php } ?>
                 </tbody>
