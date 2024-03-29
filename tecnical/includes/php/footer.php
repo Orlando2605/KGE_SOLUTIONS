@@ -1,5 +1,5 @@
  <!-- fIN DE CODIGOS DE ACTIVOS FIJOS -->
- <footer class="position-fixed" >
+ <footer class="position-fixed>
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">

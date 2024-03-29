@@ -27,25 +27,14 @@ if (isset($_POST['filtro'])) {
 $query = mysqli_query($conexion, $sql);
 
 ?>
-
+<br>
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <title>Administradores</title>
    <meta charset="UTF-8">
 </head>
-<!-- <body background="../Imagenes/gby.jpg" width="2500" weight="1000"><br>
-    <style>
-        .buscador {
-            border-radius: 1px;
-            padding: 10px;
-        }
-        .btn-warning {
-            background-color: #794e0f;
-            border-color: #8b8b8a00;
-        }
-    </style> -->
-
+<h2 style="text-align: center;" id="titulo">USUARIOS</h2>
 <div class="container-fluid p-5">
     <div class="row align-items-center buscador">
         <div class="container-row"></div>
@@ -154,7 +143,7 @@ $query = mysqli_query($conexion, $sql);
    <div class="col"></div>
    <div class="col"></div>
 </div>
-<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <!-- FIN-PDF -->
 
 <!-- Resto del código HTML y JavaScript -->

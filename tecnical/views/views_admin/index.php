@@ -46,7 +46,6 @@
 </head>
 
 <body>
-    <br>
     <!-- Empieza el menu -->
 
     <!-- Termina el menu -->
@@ -212,7 +211,7 @@
         });
     </script>
 
-</body>
+</body><br><br><br><br><br><br><br><br><br>
 <?php include "agregar.php"; ?>
 <?php include "../../includes/php/footer.php"; ?>
 

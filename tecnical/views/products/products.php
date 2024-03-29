@@ -1,15 +1,4 @@
-<?php include "../../includes/php/header.php"; ?>
-
-<?php
-// Evitar cacheo de página
-#header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
-#header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Fecha en el pasado
-// Si no hay una sesión iniciada, redireccionar al inicio o a donde desees
-#if (!isset($_SESSION['usuario'])) {
-#    header("Location: ../../index.php");
-#    exit;
-#}
-?>
+<?php include "../../includes/php/header.php"?><br>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,7 +13,7 @@
 </head>
 <body>
 
-    <div class="container-fluid p-5">
+    <div class="container-fluid">
         <div class="col-sm-12">
             <h2 id="titulo" style="text-align: center;">PRODUCTOS GENERALES</h2>
             <br>
@@ -113,7 +102,7 @@
             });
         });
     </script>
-</body>
+</body><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <?php include "../../includes/php/footer.php"; ?>
 <?php include "add_product.php"; ?>
 </html>
