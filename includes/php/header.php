@@ -75,7 +75,7 @@
                     
                     <a href="../users/user.php" class="nav-item nav-link"><i class="fa fa-laptop me-2"></i>Ver Usuarios</a>
                    
-                    <a href="../../views/products/products.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Generales</a>   
+                    <a href="../../views/products/products.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>INACTIVOS</a>   
                     <a href="../../views/views_admin/pdf.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>REPORTE PDF</a>                  
                     <div class="nav-item dropdown">
                       
