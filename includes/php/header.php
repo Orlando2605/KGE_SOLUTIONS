@@ -73,7 +73,7 @@
                 <div class="navbar-nav w-100">
                     <a href="../../views/views_admin/index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>INICIO</a>
                     
-                    <a href="../users/user.php" class="nav-item nav-link"><i class="fa fa-laptop me-2"></i>Ver Usuarios</a>
+                    <a href="../users/user.php" class="nav-item nav-link"><i class="fa fa-laptop me-2"></i>USUARIOS</a>
                    
                     <a href="../../views/products/products.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>INACTIVOS</a>   
                     <a href="../../views/views_admin/pdf.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>REPORTE PDF</a>                  
