@@ -19,15 +19,15 @@
             <h2>¡ES MOMENTO DE INGRESAR!</h2>
             <form id="form1" method="post" action="./includes/php/valida.php">
                 <div class="user-box" id="datos" id="inp10">
-                    <input type="text" id="inp10" name="usuario" maxlength="30" required  >
-                    <label> Usuario</label>
+                    <input type="text" id="inp10" name="usuario" maxlength="30" required placeholder="Teclea tu Usuario" >
+                    <label></label>
                 </div>
                 <div class="user-box">
                     <input  type="password" class="form-control" id="floatingPassword" placeholder="Teclee su contrase&ntilde;a" id="inp3" name="password" required>
                     <label></label>
                 </div><br>
                 <div class="remember-forgot">
-                    <div class="checkbox">
+                    <div class="checkbox"><br>
                         <input type="checkbox" id="remember-me">
                         <label for="remember-me">Recordar contraseña</label>
                     </div><br>

@@ -16,7 +16,7 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Clave</label>
-                                <input type="number" id="clave" name="clave" class="form-control" required>
+                                <input type="text" id="clave" name="clave" class="form-control" required>
                             </div>
                         </div>
 

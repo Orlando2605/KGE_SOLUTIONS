@@ -73,7 +73,7 @@ if($fila = mysqli_fetch_array($result))
     }
     else {
         echo("<script>alert('Usuario no encontrado...');");
-        echo("location.replace('../../signin.php');");
+        echo("location.replace('../../index.php');");
         echo("</script>");
     }
 
