@@ -82,7 +82,7 @@
                     }
 
                     // Obtener categorías únicas de la base de datos
-                    $result_categorias = $conexion->query("SELECT DISTINCT categoria FROM act_fijos");
+                    $result_categorias = $conexion->query("SELECT DISTINCT categoria FROM act_fijos WHERE activo = 1");
 
                     // Verificar si hay resultados
                     if ($result_categorias->num_rows > 0) {
@@ -94,7 +94,7 @@
                             echo "<h6 class='color-categoria'>$categoria_actual</h6>"; //titulo de tabla
 
                             // Consultar elementos de la categoría actual
-                            $query = "SELECT id, codigo, marca, clave, serie, existencia, usuarios, costo, factura, descripcion, imagen FROM act_fijos WHERE categoria = '$categoria_actual'";
+                            $query = "SELECT id, codigo, marca, clave, serie, existencia, usuarios, costo, factura, descripcion, imagen FROM act_fijos WHERE categoria = '$categoria_actual' && activo = 1";
                             $result_categoria = $conexion->query($query);
 
                             // Verificar si hay resultados
@@ -102,20 +102,18 @@
                                 echo "<div class='table-responsive'>";
                                 echo "<table class='table text-start align-middle table-bordered table-hover mb-1 bg-secondary'>"; /* color gris de la tabla por si se gusta cambiar */
                                 echo "<thead><tr class='text-white'>
-                                            <th>ID</th>
                                             <th>Codigo</th>
                                             <th>Marca</th>
                                             <th>Clave</th>
                                             <th>Serie</th>
-                                            <th>Existencia</th>
-                                            <th>Usuarios</th>
-                                            <th>Costo $</th>
+                                            <th>Número de factura</th>
+                                            <th>Usuario</th>
+                                            <th>Costo</th>
                                         </tr></thead>";
                                 echo "<tbody>";
 
                                 while ($fila = $result_categoria->fetch_assoc()) {
                                     echo "<tr class='fila-seleccionable' data-id='" . $fila['id'] . "' data-descripcion='" . $fila['descripcion'] . "' data-factura='" . $fila['factura']  . "' data-imagen='" . $fila['imagen'] ."'>";
-                                    echo "<td>" . $fila['id'] . "</td>";
                                     echo "<td>" . $fila['codigo'] . "</td>";
                                     echo "<td>" . $fila['marca'] . "</td>";
                                     echo "<td>" . $fila['clave'] . "</td>";
@@ -150,10 +148,11 @@
                             <h4 class="text-center">Descripcion del producto</h4>
                             <div id="imagen" align="center"></div><br>
 
-                            <p id="descripcion-producto"></p>
-                            <p id="factura-producto"></p>
+                            <p id="descripcion-producto" align="justify"></p>
+                            <p id="existencia"></p>
+                            <p id="fecha_adquisicion"></p>
                             <br>
-                            <a class="btn btn-primary" id="btn-descargar" href="#">Descargar</a>
+                            <a class="btn btn-primary" id="btn-descargar" href="#">Descargar factura</a>
                             <a class="btn btn-warning" id="btn-editar" href="#">Editar</a>
                             <a class="btn btn-danger" id="btn-eliminar" href="#">Eliminar</a>
                             
@@ -173,12 +172,14 @@
                 var imagen = $(this).data("imagen")
                 var descripcion = $(this).data("descripcion");
                 var factura = $(this).data("factura");
+                var existencia = $(this).data("serie");
 
                 // Mostrar datos en el contenedor 2
                 
                 $("#imagen").html("<img src='../../includes/img/" + imagen + "' alt='imagen' width='300px'>");
         
-                $("#descripcion-producto").text("Descripción: " + descripcion);
+                $("#descripcion-producto").text(descripcion);
+                $("#existencia").text("Num de factura: " + existencia);
                 $("#factura-producto").text("Factura: " + factura);
 
                 // Almacenar ID en un atributo de datos del contenedor 2

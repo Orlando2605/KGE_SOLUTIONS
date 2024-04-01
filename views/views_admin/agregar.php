@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h3 class="modal-title" id="exampleModalLabel">AGREGAR PRODUCTO FIJO</h3>
+                <h3 class="modal-title" id="exampleModalLabel">AGREGAR ACTIVO FIJO</h3>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">
                     <i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
@@ -18,6 +18,8 @@
 
                             </div>
                         </div>
+
+                        
 
 
                         <div class="col-sm-6">
@@ -50,14 +52,14 @@
 
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="nombre" class="form-label">Existencia</label>
-                                <input type="number" id="existencia" name="existencia" class="form-control" required>
+                                <label for="nombre" class="form-label">Número de factura</label>
+                                <input type="text" id="existencia" name="existencia" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="nombre" class="form-label">Usuarios</label>
+                                <label for="nombre" class="form-label">Usuario</label>
                                 <input type="text" id="usuarios" name="usuarios" class="form-control" required>
                             </div>
                         </div>
@@ -70,19 +72,57 @@
                         </div>
 
 
+                
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Fecha de adquisicion</label>
+                            <input type="date" id="fecha_adquisicion" name="fecha_adquisicion" class="form-control" required>
+
+                        </div>
+                       
+
+
                         <div class="col-sm-6">
-                            <div class="mb-3">
-                            <label for="nombre">Selecciona lugar:</label>
-                                    <!-- Utiliza la etiqueta <select> para crear la selección de opciones -->
-                                    <select id="lugar" name="lugar" required>
-                                        <!-- Utiliza la etiqueta <option> para cada opción dentro de la selección -->
-                                        <option value="Alta">Planta alta</option>
-                                        <option value="Baja">Planta baja</option>
-                                        <option value="Fuera">Fuera de oficina</option>
-                                        <!-- Puedes agregar más opciones según sea necesario -->
-                                    </select>
+                        <div class="col-sm-6">
+                            <div class="mb-2">
+                            <label for="categoria">Lugar:</label>
+
+                                <?php
+                                // Conexión a la base de datos (reemplaza con tus propias credenciales)
+                                $conexion = new mysqli("localhost", "root", "", "kge");
+
+                                // Verificar la conexión
+                                if ($conexion->connect_error) {
+                                    die("Error en la conexión: " . $conexion->connect_error);
+                                }
+
+                                // Consultar categorías existentes
+                                $result = $conexion->query("SELECT DISTINCT lugar FROM act_fijos");
+
+                                echo "<select name='lugar' id='lugar'>";
+                                echo "<option value='' disabled selected>Selecciona un lugar</option>";
+
+                                while ($row = $result->fetch_assoc()) {
+                                    $lugar = $row['lugar'];
+                                    echo "<option value='$lugar'>$lugar</option>";
+                                }
+
+                                echo "</select>";
+
+                                // Cerrar la conexión
+                                $conexion->close();
+                                ?>
+
+                                <br>
+
+                                <label for="nuevo_lugar">Nuevo lugar (si no existe):</label>
+                                <input type="text" id="nuevo_lugar" name="nuevo_lugar">
+
                             </div>
                         </div>
+                        </div>
+
+
+
 
 
                         <div class="col-sm-6">
