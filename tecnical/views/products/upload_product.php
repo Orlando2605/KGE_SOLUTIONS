@@ -34,7 +34,7 @@ if (isset($_FILES['factura'])) {
     $carpeta_imagen = "../../includes/img/";
 
 
-    if ($extension_imagen == "jpg" || $extension_imagen == "jpeg" || $extension_imagen == "png") {
+    if ($extension_imagen == "jpg" || $extension_imagen == "jpeg" || $extension_imagen == "png" || $extension_imagen == "WEBP") {
         // Mover la imagen a la carpeta de destino
         if (move_uploaded_file($_FILES["imagen"]["tmp_name"], $carpeta_imagen . $nombre_imagen)) {
             // Agregar el nombre de la imagen a la base de datos
