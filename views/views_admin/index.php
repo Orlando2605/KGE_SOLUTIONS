@@ -94,7 +94,7 @@
                             echo "<h6 class='color-categoria'>$categoria_actual</h6>"; //titulo de tabla
 
                             // Consultar elementos de la categoría actual
-                            $query = "SELECT id, codigo, marca, clave, serie, existencia, usuarios, costo, factura, descripcion, imagen FROM act_fijos WHERE categoria = '$categoria_actual' && activo = 1";
+                            $query = "SELECT id, codigo, marca, clave, serie, existencia, usuarios, costo, factura, descripcion, imagen, lugar, fecha_adquisicion FROM act_fijos WHERE categoria = '$categoria_actual' && activo = 1";
                             $result_categoria = $conexion->query($query);
 
                             // Verificar si hay resultados
@@ -113,7 +113,7 @@
                                 echo "<tbody>";
 
                                 while ($fila = $result_categoria->fetch_assoc()) {
-                                    echo "<tr class='fila-seleccionable' data-id='" . $fila['id'] . "' data-descripcion='" . $fila['descripcion'] . "' data-factura='" . $fila['factura']  . "' data-imagen='" . $fila['imagen'] ."'>";
+                                    echo "<tr class='fila-seleccionable' data-id='" . $fila['id'] . "' data-descripcion='" . $fila['descripcion'] . "' data-factura='" . $fila['factura']  . "' data-imagen='" . $fila['imagen'] . "' data-lugar='" . $fila['lugar'] . "' data-fecha_adquisicion='" . $fila['fecha_adquisicion'] . "' >";
                                     echo "<td>" . $fila['codigo'] . "</td>";
                                     echo "<td>" . $fila['marca'] . "</td>";
                                     echo "<td>" . $fila['clave'] . "</td>";
@@ -149,7 +149,7 @@
                             <div id="imagen" align="center"></div><br>
 
                             <p id="descripcion-producto" align="justify"></p>
-                            <p id="existencia"></p>
+                            <p id="lugar"></p>
                             <p id="fecha_adquisicion"></p>
                             <br>
                             <a class="btn btn-primary" id="btn-descargar" href="#">Descargar factura</a>
@@ -172,14 +172,16 @@
                 var imagen = $(this).data("imagen")
                 var descripcion = $(this).data("descripcion");
                 var factura = $(this).data("factura");
-                var existencia = $(this).data("serie");
+                var fecha_adquisicion= $(this).data("fecha_adquisicion");
+                var lugar = $(this).data("lugar");
 
                 // Mostrar datos en el contenedor 2
                 
                 $("#imagen").html("<img src='../../includes/img/" + imagen + "' alt='imagen' width='300px'>");
         
-                $("#descripcion-producto").text(descripcion);
-                $("#existencia").text("Num de factura: " + existencia);
+                $("#descripcion-producto").text("Descripcion: " + descripcion);
+                $("#lugar").text("Lugar: " + lugar);
+                $("#fecha_adquisicion").text("Fecha de adquisicion: " + fecha_adquisicion);
                 $("#factura-producto").text("Factura: " + factura);
 
                 // Almacenar ID en un atributo de datos del contenedor 2

@@ -14,7 +14,7 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label"> Código</label>
-                                <input type="text" id="codigo" name="codigo" class="form-control" required>
+                                <input type="text" id="codigo" name="codigo" class="form-control" maxlength="10" required>
 
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Descripción</label>
-                                <input type="text" id="descripcion" name="descripcion" class="form-control" required>
+                                <input type="text" id="descripcion" name="descripcion" class="form-control" maxlength="70" required>
                             </div>
                         </div>
 
