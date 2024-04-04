@@ -3,20 +3,22 @@
 // Comprobar si se ha cargado un archivo
 if (isset($_FILES['factura'])) {
     extract($_POST);
-    $codigo = $_POST['codigo'];
-    $marca = $_POST['marca'];
-    $clave = $_POST['clave'];
-    $descripcion = $_POST['descripcion'];
-    $serie = $_POST['serie'];
-    $existencia = $_POST['existencia'];
-    $usuarios = $_POST['usuarios'];
-    $costo = $_POST['costo'];
-    $lugar = $_POST['lugar'];
-    $nuevo_lugar= $_POST['nuevo_lugar'];
-    $categoria = $_POST['categoria'];
-    $nueva_categoria = $_POST['nueva_categoria'];
-    $imagen = $_POST['imagen'];
-    $fecha_adquisicion = $_POST['fecha_adquisicion'];
+
+    // Verificar si los índices de $_POST están definidos
+    $codigo = isset($_POST['codigo']) ? $_POST['codigo'] : '';
+    $marca = isset($_POST['marca']) ? $_POST['marca'] : '';
+    $clave = isset($_POST['clave']) ? $_POST['clave'] : '';
+    $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
+    $serie = isset($_POST['serie']) ? $_POST['serie'] : '';
+    $n_factura = isset($_POST['n_factura']) ? $_POST['n_factura'] : '';
+    $usuarios = isset($_POST['usuarios']) ? $_POST['usuarios'] : '';
+    $costo = isset($_POST['costo']) ? $_POST['costo'] : '';
+    $lugar = isset($_POST['lugar']) ? $_POST['lugar'] : '';
+    $nuevo_lugar = isset($_POST['nuevo_lugar']) ? $_POST['nuevo_lugar'] : '';
+    $categoria = isset($_POST['categoria']) ? $_POST['categoria'] : '';
+    $nueva_categoria = isset($_POST['nueva_categoria']) ? $_POST['nueva_categoria'] : '';
+    $imagen = isset($_POST['imagen']) ? $_POST['imagen'] : '';
+    $fecha_adquisicion = isset($_POST['fecha_adquisicion']) ? $_POST['fecha_adquisicion'] : '';
 
     // Definir la carpeta de destino
     $carpeta_destino = "../files/";
@@ -55,8 +57,8 @@ if (isset($_FILES['factura'])) {
                             if (move_uploaded_file($_FILES["factura"]["tmp_name"], $carpeta_destino . $nombre_archivo)) {
                                 // Insertar la información del archivo en la base de datos
                                 include "../conexion/db.php";
-                                $sqlnuevo = "INSERT INTO act_fijos (codigo, marca, clave, descripcion, serie, existencia, usuarios, costo, factura, imagen, lugar, categoria, fecha_adquisicion) 
-                                VALUES ( '$codigo', '$marca', '$clave', '$descripcion', '$serie', '$existencia', '$usuarios', '$costo','$nombre_archivo', '$nombre_imagen', '$nuevo_lugar', '$nueva_categoria', '$fecha_adquisicion')";
+                                $sqlnuevo = "INSERT INTO act_fijos (codigo, marca, clave, descripcion, serie, n_factura, usuarios, costo, factura, imagen, lugar, categoria, fecha_adquisicion) 
+                                VALUES ( '$codigo', '$marca', '$clave', '$descripcion', '$serie', '$n_factura', '$usuarios', '$costo','$nombre_archivo', '$nombre_imagen', '$nuevo_lugar', '$nueva_categoria', '$fecha_adquisicion')";
                                 $resultado = mysqli_query($conexion, $sqlnuevo);
                                 if ($resultado) {
                                     echo "<script language='JavaScript'>
@@ -91,8 +93,8 @@ if (isset($_FILES['factura'])) {
                             if (move_uploaded_file($_FILES["factura"]["tmp_name"], $carpeta_destino . $nombre_archivo)) {
                                 // Insertar la información del archivo en la base de datos
                                 include "../conexion/db.php";
-                                $sql = "INSERT INTO act_fijos (codigo, marca, clave, descripcion, serie, existencia, usuarios, costo, factura, imagen, lugar, categoria, fecha_adquisicion) 
-                                VALUES ( '$codigo', '$marca', '$clave', '$descripcion', '$serie', '$existencia', '$usuarios', '$costo','$nombre_archivo', '$nombre_imagen', '$lugar', '$categoria', '$fecha_adquisicion')";
+                                $sql = "INSERT INTO act_fijos (codigo, marca, clave, descripcion, serie, n_factura, usuarios, costo, factura, imagen, lugar, categoria, fecha_adquisicion) 
+                                VALUES ( '$codigo', '$marca', '$clave', '$descripcion', '$serie', '$n_factura', '$usuarios', '$costo','$nombre_archivo', '$nombre_imagen', '$lugar', '$categoria', '$fecha_adquisicion')";
                                 $resultado = mysqli_query($conexion, $sql);
                                 if ($resultado) {
                                     echo "<script language='JavaScript'>

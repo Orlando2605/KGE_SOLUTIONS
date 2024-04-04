@@ -1,69 +1,56 @@
 <?php include "../../includes/php/header.php"; ?>
 <?php
-  $mysql=new mysqli('localhost','root','','kge');
-
-  $sql="SELECT * FROM tbl_users";
-
-  if (isset($_POST['buscar'])) {
-    $nombre=$_POST['nombre'];
-    $sql="SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%' OR tx_apellidoPaterno LIKE '%$nombre%' OR tx_apellidoMaterno LIKE '%$nombre%' OR tx_correo LIKE '%$nombre%' OR tx_username LIKE '%$nombre%'";
-  }
-
-  if (isset($_POST['filtro'])){
+$mysql = new mysqli('localhost', 'root', '', 'kge');
+$sql = "SELECT * FROM tbl_users";
+if (isset($_POST['buscar'])) {
+    $nombre = $_POST['nombre'];
+    $sql = "SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%' OR tx_apellidoPaterno LIKE '%$nombre%' OR tx_apellidoMaterno LIKE '%$nombre%' OR tx_correo LIKE '%$nombre%' OR tx_username LIKE '%$nombre%'";
+}
+if (isset($_POST['filtro'])) {
     switch ($_POST['filtro']) {
         case 'M_todos':
-        $sql="SELECT * FROM tbl_users";
-      break;
+            $sql = "SELECT * FROM tbl_users";
+            break;
         case 'D_nombre':
-        $sql = "SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%'";
-      break;
+            $sql = "SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%'";
+            break;
         case 'F_apellido':
-        $sql = "SELECT * FROM tbl_users WHERE tx_apellidoPaterno LIKE '%$nombre%'";
+            $sql = "SELECT * FROM tbl_users WHERE tx_apellidoPaterno LIKE '%$nombre'";
     }
-  }
-  $query=mysqli_query($mysql,$sql);
- 
+}
+$query = mysqli_query($mysql, $sql);
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        
-    
-   
-  </style>
     <title>ACTIVOS FIJOS</title>
-
-   
-
-    <script src="../../js/jquery.min.js"></script> <!-- ayuda a mostrar los datos del contenedor 2 -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <script src="../../js/jquery.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
-    <!-- <link rel="stylesheet" href="../../includes/css/style.css"> -->
 </head>
 
 <body>
-    <br>
-    <!-- Empieza el menu -->
-
-    <!-- Termina el menu -->
-
     <div class="container-fluid position-relative d-flex p-4">
         <div class="col-sm-12">
             <h2 style="text-align: center;" id="titulo">ACTIVOS FIJOS INACTIVOS</h2>
             <br>
-            <!-- <br>
-               
-                <form action="../../includes/php/exit.php" method="post">
-                    <input type="SUBMIT" value="Cerrar Sesi&oacute;n" />
-                </form>
-                           
+            <!-- Botón Generar PDF -->
+            <div class="row align-items-center">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col">
+                    <button type="button" class="btn btn-danger" onclick="location.href='../../includes/pdf/D_gpdf.php?activo=0'">
+                        Generar PDF
+                    </button>
+                </div>
+            </div>
             <br>
- -->
-                <br>
             <div class="row" class="tabla">
                 <div class="col-md-8" id="tabla1">
                     <?php
@@ -88,7 +75,7 @@
                             echo "<h6 class='color-categoria'>$categoria_actual</h6>"; //titulo de tabla
 
                             // Consultar elementos de la categoría actual
-                            $query = "SELECT id, codigo, marca, clave, serie, existencia, usuarios, costo, factura, descripcion, imagen FROM act_fijos WHERE categoria = '$categoria_actual' && activo = 0";
+                            $query = "SELECT id, codigo, marca, clave, serie, n_factura, usuarios, costo, factura, descripcion, imagen FROM act_fijos WHERE categoria = '$categoria_actual' && activo = 0";
                             $result_categoria = $conexion->query($query);
 
                             // Verificar si hay resultados
@@ -101,7 +88,7 @@
                                             <th>Marca</th>
                                             <th>Clave</th>
                                             <th>Serie</th>
-                                            <th>Existencia</th>
+                                            <th>N_factura</th>
                                             <th>Usuarios</th>
                                             <th>Costo $</th>
                                         </tr></thead>";
@@ -115,7 +102,7 @@
                                     echo "<td>" . $fila['clave'] . "</td>";
                          
                                     echo "<td>" . $fila['serie'] . "</td>";
-                                    echo "<td>" . $fila['existencia'] . "</td>";
+                                    echo "<td>" . $fila['n_factura'] . "</td>";
                                     echo "<td>" . $fila['usuarios'] . "</td>";
                                     echo "<td>" . $fila['costo'] . "</td>";
                                     echo "</tr>";
@@ -156,6 +143,9 @@
             </div>
         </div>
     </div>
+
+
+             
 
     <script>
         $(document).ready(function () {

@@ -53,7 +53,7 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Número de factura</label>
-                                <input type="text" id="existencia" name="existencia" class="form-control" required>
+                                <input type="text" id="n_factura" name="n_factura" class="form-control" required>
                             </div>
                         </div>
 
