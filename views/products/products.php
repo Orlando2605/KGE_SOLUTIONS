@@ -1,25 +1,24 @@
 <?php include "../../includes/php/header.php"; ?>
-
 <?php
   $mysql=new mysqli("sql109.infinityfree.com", "if0_36301317", "orlandogomez260502", "if0_36301317_kge");
 
-  $sql="SELECT * FROM act_fijos";
+  $sql="SELECT * FROM tbl_users";
 
   if (isset($_POST['buscar'])) {
-    $serie=$_POST['serie'];
-    $sql="SELECT * FROM act_fijos WHERE serie LIKE '%$serie%' OR marca LIKE '%$serie%' OR clave LIKE '%$serie%' OR descripcion LIKE '%$serie%' OR serie LIKE '%$serie%' OR existencia LIKE '%$serie%' OR usuarios LIKE '%$serie%' OR costo LIKE '%$serie%' OR factura LIKE '%$serie%' OR lugar LIKE '%$serie%' OR categoria LIKE '%$serie%' OR fecha_adquisicion LIKE '%$serie%' OR activo LIKE '%$serie%'";
+    $nombre=$_POST['nombre'];
+    $sql="SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%' OR tx_apellidoPaterno LIKE '%$nombre%' OR tx_apellidoMaterno LIKE '%$nombre%' OR tx_correo LIKE '%$nombre%' OR tx_username LIKE '%$nombre%'";
   }
 
   if (isset($_POST['filtro'])){
     switch ($_POST['filtro']) {
         case 'M_todos':
-        $sql="SELECT * FROM act_fijos";
+        $sql="SELECT * FROM tbl_users";
       break;
-        case 'D_serie':
-        $sql = "SELECT * FROM act_fijos WHERE serie LIKE '%$nombre%'";
+        case 'D_nombre':
+        $sql = "SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%'";
       break;
-        case 'F_serie':
-        $sql = "SELECT * FROM act_fijos WHERE serie LIKE '%$nombre%'";
+        case 'F_apellido':
+        $sql = "SELECT * FROM tbl_users WHERE tx_apellidoPaterno LIKE '%$nombre%'";
     }
   }
   $query=mysqli_query($mysql,$sql);
@@ -54,20 +53,8 @@
 
     <div class="container-fluid position-relative d-flex p-4">
         <div class="col-sm-12">
-            <h2 style="text-align: center;" id="titulo">INACTIVOS FIJOS SOLUTIONS</h2>
+            <h2 style="text-align: center;" id="titulo">ACTIVOS FIJOS INACTIVOS</h2>
             <br>
-
-
-            <div class="row align-items-center buscador">
-        <div class="container-row"></div>
-        <div class="col-5">
-            <form class="d-flex" method="POST">
-                <input class="form-control me-2" type="search" placeholder="Datos a buscar" name="serie" style="border: 1px solid #ccc; color: white;">
-                <button class="btn btn-warning" type="submit" name="buscar"><b style="color: white;">Buscar</b></button>
-            </form>
-        </div>
-        <div class="col"></div>
-    </div>
             <!-- <br>
                
                 <form action="../../includes/php/exit.php" method="post">
@@ -101,7 +88,7 @@
                             echo "<h6 class='color-categoria'>$categoria_actual</h6>"; //titulo de tabla
 
                             // Consultar elementos de la categoría actual
-                            $query = "SELECT id, codigo, marca, clave, serie, existencia, usuarios, costo, factura, descripcion, imagen, lugar, fecha_adquisicion FROM act_fijos WHERE categoria = '$categoria_actual' && activo = 0";
+                            $query = "SELECT id, codigo, marca, clave, serie, n_factura, usuarios, costo, factura, descripcion, imagen FROM act_fijos WHERE categoria = '$categoria_actual' && activo = 0";
                             $result_categoria = $conexion->query($query);
 
                             // Verificar si hay resultados
@@ -109,24 +96,26 @@
                                 echo "<div class='table-responsive'>";
                                 echo "<table class='table text-start align-middle table-bordered table-hover mb-1 bg-secondary'>"; /* color gris de la tabla por si se gusta cambiar */
                                 echo "<thead><tr class='text-white'>
+                                            <th>ID</th>
                                             <th>Codigo</th>
                                             <th>Marca</th>
                                             <th>Clave</th>
                                             <th>Serie</th>
-                                            <th>Número de factura</th>
-                                            <th>Usuario</th>
-                                            <th>Costo</th>
+                                            <th>N_factura</th>
+                                            <th>Usuarios</th>
+                                            <th>Costo $</th>
                                         </tr></thead>";
                                 echo "<tbody>";
 
                                 while ($fila = $result_categoria->fetch_assoc()) {
-                                    echo "<tr class='fila-seleccionable' data-id='" . $fila['id'] . "' data-descripcion='" . $fila['descripcion'] . "' data-factura='" . $fila['factura']  . "' data-imagen='" . $fila['imagen'] . "' data-lugar='" . $fila['lugar'] . "' data-fecha_adquisicion='" . $fila['fecha_adquisicion'] . "' >";
+                                    echo "<tr class='fila-seleccionable' data-id='" . $fila['id'] . "' data-descripcion='" . $fila['descripcion'] . "' data-factura='" . $fila['factura']  . "' data-imagen='" . $fila['imagen'] ."'>";
+                                    echo "<td>" . $fila['id'] . "</td>";
                                     echo "<td>" . $fila['codigo'] . "</td>";
                                     echo "<td>" . $fila['marca'] . "</td>";
                                     echo "<td>" . $fila['clave'] . "</td>";
                          
                                     echo "<td>" . $fila['serie'] . "</td>";
-                                    echo "<td>" . $fila['existencia'] . "</td>";
+                                    echo "<td>" . $fila['n_factura'] . "</td>";
                                     echo "<td>" . $fila['usuarios'] . "</td>";
                                     echo "<td>" . $fila['costo'] . "</td>";
                                     echo "</tr>";
@@ -155,13 +144,11 @@
                             <h4 class="text-center">Descripcion del producto</h4>
                             <div id="imagen" align="center"></div><br>
 
-                            <p id="descripcion-producto" align="justify"></p>
-                            <p id="lugar"></p>
-                            <p id="fecha_adquisicion"></p>
+                            <p id="descripcion-producto"></p>
+                            <p id="factura-producto"></p>
                             <br>
-                            <a class="btn btn-primary" id="btn-descargar" href="#">Descargar factura</a>
-                            <!--<a class="btn btn-warning" id="btn-editar" href="#">Editar</a>
-                            <a class="btn btn-danger" id="btn-eliminar" href="#">Eliminar</a>-->
+                            <a class="btn btn-primary" id="btn-descargar" href="#">Descargar</a>
+                            <!--<a class="btn btn-danger" id="btn-eliminar" href="#">Eliminar</a> -->
                             
                         </div>
                     </div>
@@ -169,6 +156,35 @@
             </div>
         </div>
     </div>
+
+
+    <!---PDF----> <!-- FALTA CONSIGURAR LAS RUTAS DEL PDF -->
+    <div class="row align-items-center"> 
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div  href=""  class="col">
+                <button  type="button"  class="btn btn-danger"  onclick="location.href='../../includes/pdf/D_gpdf.php?activo=0'">
+                Generar PDF
+                </button>
+             </div>
+
+
+            <!--  <div class="row align-items-center"> 
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div  href=""  class="col">
+                <button  type="button"  class="btn btn-danger" target="_blank" onclick="location.href='../../includes/pdf/gpdf.php?activo=1' ">
+                Generar PDF
+                </button>
+             </div> -->
+
+             
 
     <script>
         $(document).ready(function () {
@@ -179,16 +195,12 @@
                 var imagen = $(this).data("imagen")
                 var descripcion = $(this).data("descripcion");
                 var factura = $(this).data("factura");
-                var fecha_adquisicion= $(this).data("fecha_adquisicion");
-                var lugar = $(this).data("lugar");
 
                 // Mostrar datos en el contenedor 2
                 
                 $("#imagen").html("<img src='../../includes/img/" + imagen + "' alt='imagen' width='300px'>");
         
-                $("#descripcion-producto").text("Descripcion: " + descripcion);
-                $("#lugar").text("Lugar: " + lugar);
-                $("#fecha_adquisicion").text("Fecha de adquisicion: " + fecha_adquisicion);
+                $("#descripcion-producto").text("Descripción: " + descripcion);
                 $("#factura-producto").text("Factura: " + factura);
 
                 // Almacenar ID en un atributo de datos del contenedor 2
