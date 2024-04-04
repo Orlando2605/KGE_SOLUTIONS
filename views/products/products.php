@@ -1,56 +1,69 @@
 <?php include "../../includes/php/header.php"; ?>
 <?php
-$mysql = new mysqli('localhost', 'root', '', 'kge');
-$sql = "SELECT * FROM tbl_users";
-if (isset($_POST['buscar'])) {
-    $nombre = $_POST['nombre'];
-    $sql = "SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%' OR tx_apellidoPaterno LIKE '%$nombre%' OR tx_apellidoMaterno LIKE '%$nombre%' OR tx_correo LIKE '%$nombre%' OR tx_username LIKE '%$nombre%'";
-}
-if (isset($_POST['filtro'])) {
+  $mysql=new mysqli('localhost','root','','kge');
+
+  $sql="SELECT * FROM tbl_users";
+
+  if (isset($_POST['buscar'])) {
+    $nombre=$_POST['nombre'];
+    $sql="SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%' OR tx_apellidoPaterno LIKE '%$nombre%' OR tx_apellidoMaterno LIKE '%$nombre%' OR tx_correo LIKE '%$nombre%' OR tx_username LIKE '%$nombre%'";
+  }
+
+  if (isset($_POST['filtro'])){
     switch ($_POST['filtro']) {
         case 'M_todos':
-            $sql = "SELECT * FROM tbl_users";
-            break;
+        $sql="SELECT * FROM tbl_users";
+      break;
         case 'D_nombre':
-            $sql = "SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%'";
-            break;
+        $sql = "SELECT * FROM tbl_users WHERE tx_nombre LIKE '%$nombre%'";
+      break;
         case 'F_apellido':
-            $sql = "SELECT * FROM tbl_users WHERE tx_apellidoPaterno LIKE '%$nombre'";
+        $sql = "SELECT * FROM tbl_users WHERE tx_apellidoPaterno LIKE '%$nombre%'";
     }
-}
-$query = mysqli_query($mysql, $sql);
+  }
+  $query=mysqli_query($mysql,$sql);
+ 
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        
+    
+   
+  </style>
     <title>ACTIVOS FIJOS</title>
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <script src="../../js/jquery.min.js"></script>
+
+   
+
+    <script src="../../js/jquery.min.js"></script> <!-- ayuda a mostrar los datos del contenedor 2 -->
     <script src="../../js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" href="../../includes/css/style.css"> -->
 </head>
 
 <body>
+    <br>
+    <!-- Empieza el menu -->
+
+    <!-- Termina el menu -->
+
     <div class="container-fluid position-relative d-flex p-4">
         <div class="col-sm-12">
             <h2 style="text-align: center;" id="titulo">ACTIVOS FIJOS INACTIVOS</h2>
             <br>
-            <!-- Botón Generar PDF -->
-            <div class="row align-items-center">
-                <div class="col"></div>
-                <div class="col"></div>
-                <div class="col"></div>
-                <div class="col"></div>
-                <div class="col"></div>
-                <div class="col">
-                    <button type="button" class="btn btn-danger" onclick="location.href='../../includes/pdf/D_gpdf.php?activo=0'">
-                        Generar PDF
-                    </button>
-                </div>
-            </div>
+            <!-- <br>
+               
+                <form action="../../includes/php/exit.php" method="post">
+                    <input type="SUBMIT" value="Cerrar Sesi&oacute;n" />
+                </form>
+                           
             <br>
+ -->
+                <br>
             <div class="row" class="tabla">
                 <div class="col-md-8" id="tabla1">
                     <?php
@@ -144,6 +157,32 @@ $query = mysqli_query($mysql, $sql);
         </div>
     </div>
 
+
+    <!---PDF----> <!-- FALTA CONSIGURAR LAS RUTAS DEL PDF -->
+    <div class="row align-items-center"> 
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div  href=""  class="col">
+                <button  type="button"  class="btn btn-danger"  onclick="location.href='../../includes/pdf/D_gpdf.php?activo=0'">
+                Generar PDF
+                </button>
+             </div>
+
+
+            <!--  <div class="row align-items-center"> 
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div  href=""  class="col">
+                <button  type="button"  class="btn btn-danger" target="_blank" onclick="location.href='../../includes/pdf/gpdf.php?activo=1' ">
+                Generar PDF
+                </button>
+             </div> -->
 
              
 
