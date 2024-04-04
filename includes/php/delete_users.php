@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos (reemplaza 'localhost', 'usuario', 'contraseña', 'basededatos' según corresponda)
-$conn = new mysqli('localhost', 'root', '', 'kge');
+$conn = new mysqli("sql109.infinityfree.com", "if0_36301317", "orlandogomez260502", "if0_36301317_kge");
 
 // Verificar la conexión
 if ($conn->connect_error) {

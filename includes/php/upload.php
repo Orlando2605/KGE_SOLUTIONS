@@ -46,7 +46,7 @@ if (isset($_FILES['factura'])) {
             include "../conexion/db.php";
 
 
-                if (!empty($nueva_categoria) && !empty($nuevo_lugar)) {
+                if (!empty($nueva_categoria) || !empty($nuevo_lugar)) {
                     // Validar la extensión del archivo
                         if ($extension == "pdf" || $extension == "doc" || $extension == "docx") {
 

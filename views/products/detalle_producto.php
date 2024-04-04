@@ -27,7 +27,7 @@
             $producto_id = $_GET['id'];
 
             // Conexión a la base de datos
-            $conexion = new mysqli("localhost", "root", "", "kge");
+            $conexion = new mysqli("sql109.infinityfree.com", "if0_36301317", "orlandogomez260502", "if0_36301317_kge");
 
             // Verificar conexión
             if ($conexion->connect_error) {

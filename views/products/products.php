@@ -1,7 +1,7 @@
 <?php include "../../includes/php/header.php"; ?>
 
 <?php
-  $mysql=new mysqli('localhost','root','','kge');
+  $mysql=new mysqli("sql109.infinityfree.com", "if0_36301317", "orlandogomez260502", "if0_36301317_kge");
 
   $sql="SELECT * FROM act_fijos";
 
@@ -81,7 +81,7 @@
                 <div class="col-md-8" id="tabla1">
                     <?php
                     // Conexión a la base de datos (reemplaza con tus propias credenciales)
-                    $conexion = new mysqli("localhost", "root", "", "kge");
+                    $conexion = new mysqli("sql109.infinityfree.com", "if0_36301317", "orlandogomez260502", "if0_36301317_kge");
 
                     // Verificar la conexión
                     if ($conexion->connect_error) {

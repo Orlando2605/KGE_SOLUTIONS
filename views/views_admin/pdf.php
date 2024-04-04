@@ -38,7 +38,7 @@
             <div class="col-md-12">
                 <?php
                 // Conexión a la base de datos (reemplaza con tus propias credenciales)
-                $conexion = new mysqli("localhost", "root", "", "kge");
+                $conexion = new mysqli("localhost", "root", "", "if0_36301317_kge");
                 // Verificar la conexión
                 if ($conexion->connect_error) {
                     die("Error en la conexión: " . $conexion->connect_error);

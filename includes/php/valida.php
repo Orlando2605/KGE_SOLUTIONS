@@ -3,7 +3,7 @@
 @session_start();
 
 #conectarse evitando ataques de inicio de sesion -- SEGURIDAD DE CONEXIÓN --
-$mysqli = new mysqli('localhost', 'root', '', 'kge');
+$mysqli = new mysqli("sql109.infinityfree.com", "if0_36301317", "osmarvelazco5", "if0_36301317_kge");
 
 $usuario=$_POST['usuario'];
 $password=strip_tags($_POST['password']);
